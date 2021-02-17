@@ -1,0 +1,12 @@
+{
+    "env":{
+        "DB_USER": "username",
+        "DB_PSW": "password",
+        "DB_HOST": "hostname.com",
+        "DB_NAME": "dbname",
+        "JWT_SECRET": "Some secret",
+        "CLOUDINARY_CLOUD_NAME": "somename",
+        "CLOUDINARY_API_KEY": "somekey",
+        "CLOUDINARY_API_SECRET": "somesecret"
+    }
+}
