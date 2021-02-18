@@ -1,5 +1,7 @@
 const express = require('express');
 
+const {notAcceptable} = require("../../shared/status.controller");
+
 const router = express.Router();
 
 // const adminRoutes = require('./admin');
@@ -9,8 +11,6 @@ const router = express.Router();
 
 // router.use('/store', storeRoutes);
 
-router.get('/', (req, res)=>{
-    res.send("Hello");
-});
+router.use(notAcceptable);
 
 module.exports = router;

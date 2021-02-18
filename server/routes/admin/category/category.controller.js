@@ -11,7 +11,7 @@ const getCategories = async (req, res)=>{
     }
 
     res.json({categories});
-}
+};
 
 const newCategory = async (req, res)=>{
     const errors = validationResult(req);
@@ -34,6 +34,6 @@ const newCategory = async (req, res)=>{
         return next(new HttpError('Unable to create a new Category', 500));
     }
     res.json({category});
-}
+};
 
 module.exports = { getCategories, newCategory };

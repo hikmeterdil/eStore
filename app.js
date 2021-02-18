@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 
 const routes = require('./server/routes');
+const frontendApp = require('./server/tools/serve-frontend');
 
 const PORT = process.env.PORT || 3310;
 
@@ -11,9 +12,9 @@ const app = express();
 
 app.use(express.json());
 
-app.use('/api', routes)
+app.use('/api', routes);
 
-app.use(express.static('./fronend/build'));
+app.use(frontendApp);
 
 const URL = `mongodb+srv://${DB_USER}:${DB_PSW}@${DB_HOST}/${DB_NAME}?retryWrites=true&w=majority`;
 
