@@ -11,16 +11,3 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-
-.table-dark{
-  color:red;
-  border:1px solid black;
-}
-
-.table-striped tbody tr:nth-child(odd){
-  background-color: gray;
-}
-
-.table-striped tbody tr:nth-child(even){
-  background-color: orange;
-}

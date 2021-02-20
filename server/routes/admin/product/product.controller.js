@@ -2,7 +2,7 @@ const {validationResult} = require('express-validator');
 const Category = require('../../../models/category');
 const Product = require('../../../models/product');
 
-const getCategories = async (req, res)=>{
+const getProducts = async (req, res)=>{
     const placeId = req.params.pid;
     let categories;
     try{
@@ -14,7 +14,7 @@ const getCategories = async (req, res)=>{
     res.json({categories});
 };
 
-const newCategory = async (req, res)=>{
+const newProduct = async (req, res)=>{
     const errors = validationResult(req);
 
     if(!errors.isEmpty()){
@@ -34,4 +34,4 @@ const updateCategory = async (req, res) => {};
 
 const deleteCategory = async (req, res) => {};
 
-module.exports = { getCategories, newCategory };
+module.exports = { getProducts, newProduct };
