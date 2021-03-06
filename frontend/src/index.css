@@ -11,3 +11,20 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+:root {
+  --main-colors-primary: yellow;
+  --main-colors-secondary: orange;
+  --main-colors-success: orange;
+  --main-colors-danger: red;
+  --main-colors-warning: red;
+  --main-colors-info: red;
+  --main-colors-light: red;
+  --main-colors-dark: red;
+  --main-colors-link: red;
+  --main-colors-filler: gray;
+  --main-colors-border: black;
+  --main-colors-shadow: lightgray;
+  --main-colors-bg-primary: teal;
+  --main-colors-bg-secondary: teal;
+}

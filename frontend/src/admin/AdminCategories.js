@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import Table, {TableHeader, TableRow} from '../shared/UIElements/Table';
 
@@ -6,8 +6,21 @@ import { useForm } from '../shared/hooks/form-hook';
 import { useHttpClient } from '../shared/hooks/http-hook';
 
 import './AdminCategories.css';
+import Uploader from '../shared/component/uploader';
 
 const AdminCategories = () => {
+  const DUMMYDATA = [
+    {name:"Cat0", details:"It is a cat.", image:"cat_image.png"},
+    {name:"Cat1", details:"It is a cat.", image:"cat_image.png"},
+    {name:"Cat2", details:"It is a cat.", image:"cat_image.png"},
+    {name:"Cat3", details:"It is a cat.", image:"cat_image.png"},
+    {name:"Cat4", details:"It is a cat.", image:"cat_image.png"},
+    {name:"Cat5", details:"It is a cat.", image:"cat_image.png"},
+    {name:"Cat6", details:"It is a cat.", image:"cat_image.png"},
+    {name:"Cat7", details:"It is a cat.", image:"cat_image.png"}
+  ];
+
+  const [categories, setCategories] = useState(DUMMYDATA);
   const {isLoading, error, sendRequest, clearError} = useHttpClient();
   const [formState, inputHandler] = useForm(
     {
@@ -20,19 +33,12 @@ const AdminCategories = () => {
         isValid: false
       },
       image: {
-        value: null,
+        value: '',
         isValid: false
       }
     },
     false
   );
-
-  const DUMMYDATA = [
-    {name:"Cat", details:"It is a cat.", image:"cat_image.png"},
-    {name:"Cat", details:"It is a cat.", image:"cat_image.png"},
-    {name:"Cat", details:"It is a cat.", image:"cat_image.png"},
-    {name:"Cat", details:"It is a cat.", image:"cat_image.png"}
-  ]
 
   const createCategory = async event => {
     event.preventDefault();
@@ -46,29 +52,46 @@ const AdminCategories = () => {
     } catch {}
   };
 
+  const editCategory = async event => {};
+
+  const saveCategory = async event => {};
+
+  const deleteCategory = async (categoryID) => {
+    try {
+      //
+      setCategories(cats=>cats.filter((c, i)=>i !== categoryID));
+    } catch {
+      
+    }
+     console.log(categoryID);
+  };
 
   return (
     <div className="admin-categories">
       <p>The Categories</p>
       <form className="admin-categories-new" onSubmit={createCategory}>
-        <input name="name" type="text" placeholder="Title"/>
-        <input name="details" type="text" placeholder="Description"/>
-        <input name="image" type="file"/>
+        <input name="name" onInput={inputHandler} type="text" placeholder="Title"/>
+        <input name="details" onInput={inputHandler} type="text" placeholder="Description"/>
+        <input name="image" type="text" placeholder="Upload an image" disabled/>
         <input type="submit" value="Save"/>
       </form>
+
+      <Uploader fileFilter=".jpg,.png,.jpeg" onUploadDone={vals=>{inputHandler('image', vals[0], true)}}  />
 
       <Table
         isStriped
         isDark
         header={<TableHeader th={["Title", "Description", "Image", "Action"]}/>} 
-        rows={DUMMYDATA.map(v=><TableRow td={[
+        rows={categories.map((v, i)=><TableRow key={i} td={[
           v.name,
           v.details,
           v.image, 
-          <button>Jhonny</button>
+          <>
+            <button onClick={()=>{editCategory(i)}}>Edit</button>
+            <button onClick={()=>{deleteCategory(i)}}>Delete</button>
+          </>
         ]}/>)}
       />
-
     </div>
   )
 };

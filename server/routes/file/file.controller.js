@@ -5,10 +5,10 @@ const getFile = (req, res)=>{
     res.send("GetFile");
 };
 const uploadSingle = (req, res)=>{
-    res.send("UploadSingleFile");
+    res.json({files: [req.file.filename]});
 };
 const uploadMultiple = (req, res)=>{
-    res.send("Upload Mltiple Files");
+    res.json({files:req.files.map(file=>file.filename)});
 };
 const deleteFile = (req, res)=>{
     res.send("Delete File");

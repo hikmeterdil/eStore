@@ -16,7 +16,9 @@ const Table = ({header, rows, isStriped, isDark}) => {
 const TableHeader = ({th}) => {
   return (  
     <thead>
-      {th.map(v=><th>{v}</th>)}
+      <tr>
+        {th.map((v, i)=><th key={i}>{v}</th>)}
+      </tr>
     </thead>
   );
 }
@@ -24,7 +26,7 @@ const TableHeader = ({th}) => {
 const TableRow= ({td}) => {
   return (
     <tr>
-      {td.map(v=><td>{v}</td>)}
+      {td.map((v, i)=><td key={i}>{v}</td>)}
     </tr>
   );
 }
